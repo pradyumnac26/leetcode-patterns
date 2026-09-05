@@ -587,6 +587,10 @@ body {
     flex: 1;
     min-width: 0;
   }
+
+  .page-shell {
+    padding: 24px 16px 40px;
+  }
 }
 
 /* sections */
@@ -682,6 +686,9 @@ body {
   color: var(--text);
   background: var(--table-card-bg);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .tbl-list thead th:not(:last-child),
@@ -728,6 +735,7 @@ body {
 }
 
 .problem-link {
+  flex: 0 1 auto;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -738,7 +746,8 @@ body {
 }
 
 .cell-companies {
-  overflow: visible;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .company-tags {
@@ -826,6 +835,38 @@ body {
 
 .row-clickable:hover td {
   background: var(--surface-hover) !important;
+}
+
+@media (max-width: 640px) {
+  .tbl thead th,
+  .tbl tbody td {
+    padding: 10px 10px;
+  }
+
+  .tbl-list .th-num {
+    width: 9%;
+  }
+
+  .tbl-list .th-problem {
+    width: 40%;
+  }
+
+  .tbl-list .th-companies {
+    width: 30%;
+  }
+
+  .tbl-list .th-diff {
+    width: 21%;
+  }
+
+  .problem-link {
+    flex: 0 1 auto;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 .cx-label {
