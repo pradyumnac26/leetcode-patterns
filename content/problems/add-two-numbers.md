@@ -2,7 +2,8 @@
 title: Add Two Numbers
 difficulty: Medium
 pattern: linked-list
-order: 40
+subpattern: linked-list
+order: 0
 bruteSummary: Convert both lists to integers, add, convert back to list.
 bruteTime: O(max(n,m))
 bruteSpace: O(max(n,m))
