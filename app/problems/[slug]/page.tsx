@@ -8,6 +8,7 @@ import {
 } from "@/lib/problems";
 import { getRawContent } from "@/lib/content";
 import { MdxBody } from "@/components/MdxBody";
+import { InlineCodeText } from "@/components/InlineCodeText";
 import { Difficulty, Approach } from "@/lib/types";
 import matter from "gray-matter";
 
@@ -78,7 +79,9 @@ export default async function ProblemPage({ params }: PageProps) {
                 <h2 className="clarify-block-title">Questions to clarify</h2>
                 <ul className="clarify-list">
                   {problem.clarifyingQuestions.map((question) => (
-                    <li key={question}>{question}</li>
+                    <li key={question}>
+                      <InlineCodeText text={question} />
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -98,8 +101,26 @@ export default async function ProblemPage({ params }: PageProps) {
 
             <hr className="detail-divider" />
 
-            <h2 className="detail-heading detail-heading-pitfalls">Pitfalls to watch for</h2>
-            <p className="detail-body-text pitfalls-text">{problem.pitfalls}</p>
+            {problem.pitfalls.length > 0 && (
+              <>
+                <h2 className="detail-heading detail-heading-pitfalls">
+                  Pitfalls to watch for
+                </h2>
+                {problem.pitfalls.length === 1 ? (
+                  <p className="detail-body-text pitfalls-text">
+                    <InlineCodeText text={problem.pitfalls[0]} />
+                  </p>
+                ) : (
+                  <ul className="clarify-list pitfalls-list">
+                    {problem.pitfalls.map((pitfall) => (
+                      <li key={pitfall} className="pitfalls-text">
+                        <InlineCodeText text={pitfall} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </>
+            )}
 
             {body && (
               <>
@@ -162,7 +183,9 @@ function ApproachBlock({
   return (
     <div className={`approach-block approach-block-${variant}`}>
       <h2 className="approach-block-title">{label}</h2>
-      <p className="approach-block-summary">{approach.summary}</p>
+      <p className="approach-block-summary">
+        <InlineCodeText text={approach.summary} />
+      </p>
       <div className="approach-block-cx">
         <div className="approach-cx-item">
           <span className="approach-cx-label">Time</span>

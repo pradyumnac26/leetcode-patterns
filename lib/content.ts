@@ -13,6 +13,16 @@ import { SUBPATTERNS, UNCATEGORIZED_SUBPATTERN_ID } from "./subpatterns";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "problems");
 
+function normalizeStringList(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value.map(String).filter((item) => item.trim());
+  }
+  if (typeof value === "string" && value.trim()) {
+    return [value.trim()];
+  }
+  return [];
+}
+
 type ProblemFrontmatter = {
   title: string;
   difficulty?: Difficulty;
@@ -24,7 +34,7 @@ type ProblemFrontmatter = {
   optimalSummary?: string;
   optimalTime?: string;
   optimalSpace?: string;
-  pitfalls?: string;
+  pitfalls?: string | string[];
   video?: string;
   companies?: string[];
   clarifyingQuestions?: string[];
@@ -64,7 +74,7 @@ function parseProblemFile(slug: string, raw: string): Problem {
       time: fm.optimalTime ?? "",
       space: fm.optimalSpace ?? "",
     },
-    pitfalls: fm.pitfalls ?? "",
+    pitfalls: normalizeStringList(fm.pitfalls),
     video: fm.video || undefined,
     companies: Array.isArray(fm.companies) ? fm.companies.map(String) : [],
     body: content.trim() || undefined,

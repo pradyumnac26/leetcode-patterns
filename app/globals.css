@@ -44,6 +44,8 @@
   --approach-brute-border: #2c2840;
   --approach-optimal-bg: #1a2621;
   --approach-optimal-border: #243830;
+  --inline-code-bg: #3a3a3a;
+  --inline-code-text: #eff1f6;
 }
 
 [data-theme="light"] {
@@ -89,6 +91,8 @@
   --approach-brute-border: #ebe3d6;
   --approach-optimal-bg: #eef8f4;
   --approach-optimal-border: #d8ebe2;
+  --inline-code-bg: #e8e8e8;
+  --inline-code-text: #1a1a1a;
 }
 
 @theme inline {
@@ -1067,6 +1071,16 @@ body {
   color: var(--text);
 }
 
+.inline-code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.88em;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: var(--inline-code-bg);
+  color: var(--inline-code-text);
+  white-space: nowrap;
+}
+
 .detail-heading {
   font-size: 15px;
   font-weight: 700;
@@ -1141,6 +1155,10 @@ body {
 
 .pitfalls-text {
   color: var(--text-pitfalls);
+}
+
+.pitfalls-list {
+  margin-bottom: 10px;
 }
 
 .detail-panel-body .mdx-body {

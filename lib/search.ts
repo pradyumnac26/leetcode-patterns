@@ -11,7 +11,7 @@ export function problemMatchesSearch(problem: Problem, q: string): boolean {
     problem.optimal.summary,
     problem.optimal.time,
     problem.optimal.space,
-    problem.pitfalls,
+    ...problem.pitfalls,
     ...(problem.companies ?? []),
   ]
     .join(" ")

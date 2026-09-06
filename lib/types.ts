@@ -18,7 +18,7 @@ export type Problem = {
   clarifyingQuestions: string[];
   brute: Approach;
   optimal: Approach;
-  pitfalls: string;
+  pitfalls: string[];
   video?: string;
   body?: string;
   difficulty?: Difficulty;
