@@ -132,6 +132,11 @@ const PROBLEM_CLARIFYING_QUESTIONS: Record<string, string[]> = {
     "What should we return if the amount cannot be formed?",
     "Are coin values always positive?",
   ],
+  "sort-colors": [
+    "Are values limited to 0, 1, and 2 only?",
+    "Must the sort be in-place with O(1) extra space?",
+    "Should we return the array or only mutate it?",
+  ],
 };
 
 const FALLBACK_QUESTIONS = [

@@ -14,6 +14,21 @@ export const SUBPATTERN_MAP: Record<string, SubPatternMeta> = {
     patternNote:
       "Build parent map via DFS, then BFS from target k levels to collect nodes.",
   },
+  "sort-colors": {
+    subpattern: "dutch-national-flag",
+    patternNote:
+      "Three pointers partition the array into 0s, 1s, and 2s in one pass.",
+  },
+  "two-sum-unsorted": {
+    subpattern: "two-sum",
+    patternNote:
+      "Hash map stores seen values; check if complement exists before storing current number.",
+  },
+  "two-sum-sorted": {
+    subpattern: "two-sum",
+    patternNote:
+      "Two pointers at both ends; shrink the side that moves the sum toward target.",
+  },
 };
 
 export function getSubpatternMeta(slug: string): SubPatternMeta | undefined {

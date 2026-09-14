@@ -1,10 +1,15 @@
+import Link from "next/link";
+
 type InlineCodeTextProps = {
   text: string;
   className?: string;
 };
 
+const TOKEN_PATTERN = /(`[^`]+`|\[[^\]]+\]\([^)]+\))/g;
+const LINK_PATTERN = /^\[([^\]]+)\]\(([^)]+)\)$/;
+
 export function InlineCodeText({ text, className }: InlineCodeTextProps) {
-  const parts = text.split(/(`[^`]+`)/g);
+  const parts = text.split(TOKEN_PATTERN);
 
   return (
     <span className={className}>
@@ -16,6 +21,31 @@ export function InlineCodeText({ text, className }: InlineCodeTextProps) {
             </code>
           );
         }
+
+        const linkMatch = part.match(LINK_PATTERN);
+        if (linkMatch) {
+          const [, label, href] = linkMatch;
+          if (href.startsWith("/")) {
+            return (
+              <Link key={index} href={href} className="detail-link">
+                {label}
+              </Link>
+            );
+          }
+
+          return (
+            <a
+              key={index}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="detail-link"
+            >
+              {label}
+            </a>
+          );
+        }
+
         return part;
       })}
     </span>

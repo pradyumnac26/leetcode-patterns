@@ -40,6 +40,8 @@ type ProblemFrontmatter = {
   clarifyingQuestions?: string[];
   subpattern?: string;
   patternNote?: string;
+  url?: string;
+  followUpNote?: string;
 };
 
 function parseProblemFile(slug: string, raw: string): Problem {
@@ -50,7 +52,8 @@ function parseProblemFile(slug: string, raw: string): Problem {
   return {
     id: slug,
     title: fm.title,
-    url: `https://leetcode.com/problems/${slug}/`,
+    url: fm.url ?? `https://leetcode.com/problems/${slug}/`,
+    followUpNote: fm.followUpNote?.trim() || undefined,
     pattern: fm.pattern,
     subpattern: fm.subpattern ?? mapped?.subpattern ?? UNCATEGORIZED_SUBPATTERN_ID,
     patternNote:

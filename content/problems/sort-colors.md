@@ -1,0 +1,22 @@
+---
+title: Sort Colors
+difficulty: Medium
+pattern: two-pointers
+subpattern: dutch-national-flag
+order: 0
+companies:
+  - Microsoft
+clarifyingQuestions:
+  - Are the only values 0, 1, and 2?
+  - Must we sort in-place with O(1) extra space?
+  - Do we return anything, or only mutate `nums`?
+bruteSummary: Keep three counters (`count0`, `count1`, `count2`). Scan the array once and bump the matching counter for each value. Then overwrite `nums` in order, write `0` `count0` times, then `1` `count1` times, then `2` `count2` times.
+bruteTime: O(n)
+bruteSpace: O(1)
+optimalSummary: "Dutch National Flag: keep three pointers (`low`, `mid`, `high`) and loop while `mid <= high`. Each step compares `nums[mid]`, if `nums[mid] == 0`, swap with `low` and advance both `low` and `mid`; elif `nums[mid] == 1`, just advance `mid`; else (`nums[mid] == 2`), swap with `high` and shrink `high` only (do not advance `mid`, to re-check the swapped-in value)."
+optimalTime: O(n)
+optimalSpace: O(1)
+pitfalls:
+  - Incrementing `mid` after swapping with `high` ,  the swapped-in value is unprocessed and must be checked again.
+  - Using `mid < high` instead of `mid <= high`, which can leave a 2 at `high` unsorted.
+---

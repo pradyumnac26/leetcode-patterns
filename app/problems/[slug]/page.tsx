@@ -74,6 +74,15 @@ export default async function ProblemPage({ params }: PageProps) {
               </a>
             </p>
 
+            {problem.followUpNote && (
+              <>
+                <hr className="detail-divider" />
+                <p className="detail-body-text">
+                  <InlineCodeText text={problem.followUpNote} />
+                </p>
+              </>
+            )}
+
             {problem.clarifyingQuestions.length > 0 && (
               <div className="clarify-block">
                 <h2 className="clarify-block-title">Questions to clarify</h2>

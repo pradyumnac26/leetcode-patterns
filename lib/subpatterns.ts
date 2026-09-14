@@ -9,6 +9,8 @@ export const UNCATEGORIZED_SUBPATTERN_ID = "uncategorized";
 export const SUBPATTERNS: SubPattern[] = [
   { id: "linked-list", name: "Linked List", order: 0 },
   { id: "tree-bfs", name: "Tree BFS", order: 1 },
+  { id: "dutch-national-flag", name: "Dutch National Flag", order: 2 },
+  { id: "two-sum", name: "Two Sum", order: 3 },
   { id: UNCATEGORIZED_SUBPATTERN_ID, name: "Uncategorized", order: 99 },
 ];
 

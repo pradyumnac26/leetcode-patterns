@@ -12,6 +12,7 @@ export type Problem = {
   id: string;
   title: string;
   url: string;
+  followUpNote?: string;
   pattern: string;
   subpattern: string;
   patternNote: string;
