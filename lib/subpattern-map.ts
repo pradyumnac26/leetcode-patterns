@@ -29,6 +29,11 @@ export const SUBPATTERN_MAP: Record<string, SubPatternMeta> = {
     patternNote:
       "Two pointers at both ends; shrink the side that moves the sum toward target.",
   },
+  "maximum-subarray-sum": {
+    subpattern: "subarrays",
+    patternNote:
+      "Kadane's algorithm tracks the best sum ending at each index in one pass.",
+  },
 };
 
 export function getSubpatternMeta(slug: string): SubPatternMeta | undefined {

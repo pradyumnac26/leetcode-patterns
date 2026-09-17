@@ -137,6 +137,11 @@ const PROBLEM_CLARIFYING_QUESTIONS: Record<string, string[]> = {
     "Must the sort be in-place with O(1) extra space?",
     "Should we return the array or only mutate it?",
   ],
+  "maximum-subarray-sum": [
+    "Must the subarray be contiguous?",
+    "Do we return the sum only or the subarray itself?",
+    "Can all numbers be negative?",
+  ],
 };
 
 const FALLBACK_QUESTIONS = [
