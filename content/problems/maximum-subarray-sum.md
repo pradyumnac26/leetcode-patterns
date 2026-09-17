@@ -17,8 +17,7 @@ bruteTime: O(n²)
 
 bruteSpace: O(1)
 
-optimalSummary:   Kadane's Algorithm. Initialize `sumi = 0` and iterate through the array.
-Before adding the current element, if `sumi < 0`, reset `sumi` to `0` because a negative running sum will only decrease the sum of any future subarray. Then add the current element to `sumi` and update the maximum subarray sum (`maxi`) on every iteration.
+optimalSummary: "Kadane's Algorithm. Initialize `sumi = 0` and iterate through the array. Before adding the current element, if `sumi < 0`, reset `sumi` to `0` because a negative running sum will only decrease the sum of any future subarray. Then add the current element to `sumi` and update the maximum subarray sum (`maxi`) on every iteration."
 
 optimalTime: O(n)
 
