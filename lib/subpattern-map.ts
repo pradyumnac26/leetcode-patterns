@@ -34,6 +34,11 @@ export const SUBPATTERN_MAP: Record<string, SubPatternMeta> = {
     patternNote:
       "Kadane's algorithm tracks the best sum ending at each index in one pass.",
   },
+  "contains-duplicate": {
+    subpattern: "arrays",
+    patternNote:
+      "Hash set tracks seen values; a repeat lookup means a duplicate exists.",
+  },
 };
 
 export function getSubpatternMeta(slug: string): SubPatternMeta | undefined {
