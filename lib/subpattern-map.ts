@@ -14,6 +14,16 @@ export const SUBPATTERN_MAP: Record<string, SubPatternMeta> = {
     patternNote:
       "Build parent map via DFS, then BFS from target k levels to collect nodes.",
   },
+  "vertical-order-traversal-of-a-binary-tree": {
+    subpattern: "vertical-order-traversal",
+    patternNote:
+      "BFS with row and column; bucket by column, sort by row then value within each column.",
+  },
+  "top-view-of-binary-tree": {
+    subpattern: "vertical-order-traversal",
+    patternNote:
+      "BFS by column; keep the first node per column, then output values in sorted column order.",
+  },
   "sort-colors": {
     subpattern: "dutch-national-flag",
     patternNote:

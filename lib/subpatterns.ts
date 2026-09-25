@@ -9,10 +9,11 @@ export const UNCATEGORIZED_SUBPATTERN_ID = "uncategorized";
 export const SUBPATTERNS: SubPattern[] = [
   { id: "linked-list", name: "Linked List", order: 0 },
   { id: "tree-bfs", name: "Tree BFS", order: 1 },
-  { id: "dutch-national-flag", name: "Dutch National Flag", order: 2 },
-  { id: "two-sum", name: "Two Sum", order: 3 },
-  { id: "arrays", name: "Arrays", order: 4 },
-  { id: "subarrays", name: "Subarrays", order: 5 },
+  { id: "vertical-order-traversal", name: "Vertical Order Traversal", order: 2 },
+  { id: "dutch-national-flag", name: "Dutch National Flag", order: 3 },
+  { id: "two-sum", name: "Two Sum", order: 4 },
+  { id: "arrays", name: "Arrays", order: 5 },
+  { id: "subarrays", name: "Subarrays", order: 6 },
   { id: UNCATEGORIZED_SUBPATTERN_ID, name: "Uncategorized", order: 99 },
 ];
 
