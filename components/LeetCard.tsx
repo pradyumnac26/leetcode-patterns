@@ -12,7 +12,7 @@ type LeetCardProps = {
   index: number;
 };
 
-const TAP_MOVE_THRESHOLD_PX = 10;
+const TAP_MOVE_THRESHOLD_PX = 12;
 
 type GestureState = {
   moved: boolean;
@@ -25,7 +25,6 @@ type GestureState = {
 function LeetCardInner({ card, index }: LeetCardProps) {
   const indexLabel = String(index + 1).padStart(2, "0");
   const [flipped, setFlipped] = useState(false);
-  const [backMounted, setBackMounted] = useState(false);
   const rootRef = useRef<HTMLElement>(null);
   const gestureRef = useRef<GestureState>({
     moved: false,
@@ -70,10 +69,9 @@ function LeetCardInner({ card, index }: LeetCardProps) {
     return () => {
       detach.forEach((off) => off());
     };
-  }, [backMounted]);
+  }, []);
 
   const toggle = useCallback(() => {
-    setBackMounted(true);
     setFlipped((value) => !value);
   }, []);
 
@@ -104,29 +102,27 @@ function LeetCardInner({ card, index }: LeetCardProps) {
     }
   }, []);
 
-  const handlePointerUp = useCallback(() => {
-    const { scrollEl, startScrollTop, moved } = gestureRef.current;
+  const handlePointerUp = useCallback(
+    (event: React.PointerEvent) => {
+      const { moved, scrollEl, startScrollTop } = gestureRef.current;
+      if (moved) return;
 
-    if (moved) {
-      return;
-    }
-
-    if (scrollEl) {
-      const scrolled = Math.abs(scrollEl.scrollTop - startScrollTop) > 2;
-      if (scrolled) {
+      const target = event.target;
+      if (target instanceof HTMLElement && target.closest("a")) {
         return;
       }
 
       if (
-        scrollEl.classList.contains("card-face__code") &&
-        scrollEl.scrollHeight > scrollEl.clientHeight + 2
+        scrollEl &&
+        Math.abs(scrollEl.scrollTop - startScrollTop) > 2
       ) {
         return;
       }
-    }
 
-    toggle();
-  }, [toggle]);
+      toggle();
+    },
+    [toggle],
+  );
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent) => {
@@ -162,17 +158,15 @@ function LeetCardInner({ card, index }: LeetCardProps) {
           spaceComplexity={card.spaceComplexity}
           spaceComplexityExplanation={card.spaceComplexityExplanation}
         />
-        {backMounted ? (
-          <CardBack
-            indexLabel={indexLabel}
-            id={card.id}
-            subpattern={card.subpattern}
-            title={card.title}
-            leetcodeUrl={card.leetcodeUrl}
-            codeHtmlLight={card.codeHtmlLight}
-            codeHtmlDark={card.codeHtmlDark}
-          />
-        ) : null}
+        <CardBack
+          indexLabel={indexLabel}
+          id={card.id}
+          subpattern={card.subpattern}
+          title={card.title}
+          leetcodeUrl={card.leetcodeUrl}
+          codeHtmlLight={card.codeHtmlLight}
+          codeHtmlDark={card.codeHtmlDark}
+        />
       </div>
     </article>
   );

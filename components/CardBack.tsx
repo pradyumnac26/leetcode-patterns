@@ -58,7 +58,7 @@ function CardBackInner({
         />
       </div>
 
-      <p className="card-face__hint">Scroll for long code · tap header or footer to return</p>
+      <p className="card-face__hint">Tap to return · swipe for next card</p>
     </div>
   );
 }

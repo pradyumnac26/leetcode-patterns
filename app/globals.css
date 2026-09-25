@@ -572,27 +572,24 @@ button {
 
 .card-feed {
   height: 100dvh;
-  min-height: 100vh;
-  overflow-y: auto;
+  min-height: 100dvh;
   overflow-x: hidden;
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
 }
 
 .leet-card {
+  box-sizing: border-box;
   height: 100dvh;
-  min-height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   padding: calc(3.25rem + env(safe-area-inset-top, 0px)) 1.25rem
     calc(1.25rem + env(safe-area-inset-bottom, 0px));
   perspective: 1600px;
-  touch-action: pan-y;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 100dvh;
 }
 
 .leet-card__inner {
@@ -608,7 +605,6 @@ button {
   text-align: left;
   cursor: pointer;
   outline: none;
-  touch-action: pan-y;
 }
 
 .leet-card__inner:focus-visible {
@@ -633,7 +629,6 @@ button {
   background: var(--surface);
   box-shadow: var(--shadow);
   overflow: hidden;
-  touch-action: pan-y;
 }
 
 .card-face--back {
@@ -723,9 +718,9 @@ button {
   overflow-y: auto;
   overscroll-behavior-y: auto;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
   margin-bottom: 1rem;
   padding-top: 1.25rem;
+  cursor: auto;
 }
 
 .card-face__section {
@@ -937,9 +932,8 @@ button {
   max-height: 100%;
   overflow-x: auto;
   overflow-y: auto;
-  overscroll-behavior: contain;
+  overscroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
   margin-bottom: 0.5rem;
   border: 1px solid var(--border);
   border-radius: 10px;

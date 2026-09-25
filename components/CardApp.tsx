@@ -34,7 +34,7 @@ export function CardApp({ cards, initialTheme }: CardAppProps) {
   const handleShuffle = useCallback(() => {
     const next = shuffle(baseIds);
     setOrderedIds(next);
-    feedRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    feedRef.current?.scrollTo({ top: 0, behavior: "auto" });
   }, [baseIds]);
 
   return (

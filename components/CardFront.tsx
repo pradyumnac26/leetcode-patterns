@@ -103,7 +103,7 @@ function CardFrontInner({
         ) : null}
       </div>
 
-      <p className="card-face__hint">Tap for solution</p>
+      <p className="card-face__hint">Tap for solution · swipe for next card</p>
     </div>
   );
 }

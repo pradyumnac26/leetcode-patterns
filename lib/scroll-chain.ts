@@ -27,16 +27,27 @@ export function attachScrollChain({
     const scrollingUp = delta > 0;
     const scrollingDown = delta < 0;
 
-    if ((scrollingUp && atTop) || (scrollingDown && atBottom)) {
-      feed.scrollTop -= delta;
+    const shouldChain =
+      (scrollingUp && atTop) || (scrollingDown && atBottom);
+
+    if (!shouldChain) {
+      return;
     }
+
+    feed.scrollTop -= delta;
   };
+
+  const onTouchEnd = () => {};
 
   scrollEl.addEventListener("touchstart", onTouchStart, { passive: true });
   scrollEl.addEventListener("touchmove", onTouchMove, { passive: true });
+  scrollEl.addEventListener("touchend", onTouchEnd, { passive: true });
+  scrollEl.addEventListener("touchcancel", onTouchEnd, { passive: true });
 
   return () => {
     scrollEl.removeEventListener("touchstart", onTouchStart);
     scrollEl.removeEventListener("touchmove", onTouchMove);
+    scrollEl.removeEventListener("touchend", onTouchEnd);
+    scrollEl.removeEventListener("touchcancel", onTouchEnd);
   };
-}
+};
