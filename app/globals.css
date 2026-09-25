@@ -198,23 +198,6 @@ button {
   margin-bottom: 1.15rem;
 }
 
-.home__patterns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  list-style: none;
-}
-
-.home__pattern-pill {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  padding: 0.22rem 0.5rem;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--surface-inset);
-  color: var(--fg-secondary);
-}
-
 .editor-showcase {
   position: relative;
   width: 100%;

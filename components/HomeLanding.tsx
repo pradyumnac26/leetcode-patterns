@@ -10,10 +10,9 @@ import type { Theme } from "@/lib/theme";
 type HomeLandingProps = {
   initialTheme: Theme;
   cardCount: number;
-  patterns: string[];
 };
 
-export function HomeLanding({ initialTheme, cardCount, patterns }: HomeLandingProps) {
+export function HomeLanding({ initialTheme, cardCount }: HomeLandingProps) {
   const { theme, toggleTheme } = useTheme(initialTheme);
 
   return (
@@ -40,23 +39,7 @@ export function HomeLanding({ initialTheme, cardCount, patterns }: HomeLandingPr
 
             <p className="home__meta">
               {cardCount} {cardCount === 1 ? "card" : "cards"}
-              {patterns.length > 0 ? (
-                <>
-                  {" "}
-                  · {patterns.length} {patterns.length === 1 ? "pattern" : "patterns"}
-                </>
-              ) : null}
             </p>
-
-            {patterns.length > 0 ? (
-              <ul className="home__patterns" aria-label="Patterns in deck">
-                {patterns.map((pattern) => (
-                  <li key={pattern} className="home__pattern-pill">
-                    {pattern}
-                  </li>
-                ))}
-              </ul>
-            ) : null}
           </div>
 
           <HomeEditorShowcase theme={theme} />

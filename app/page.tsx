@@ -16,10 +16,6 @@ export default async function Home() {
   const initialTheme = parseTheme(cookieStore.get(THEME_COOKIE)?.value);
 
   return (
-    <HomeLanding
-      initialTheme={initialTheme}
-      cardCount={summary.cardCount}
-      patterns={summary.patterns}
-    />
+    <HomeLanding initialTheme={initialTheme} cardCount={summary.cardCount} />
   );
 }

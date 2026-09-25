@@ -41,17 +41,12 @@ const loadParsedCards = cache(async () => {
 
 export type DeckSummary = {
   cardCount: number;
-  patterns: string[];
 };
 
 /** Fast path for the landing page — no syntax highlighting. */
 export const getDeckSummary = cache(async (): Promise<DeckSummary> => {
   const parsed = await loadParsedCards();
-  const patterns = [
-    ...new Set(parsed.map((card) => card.subpattern.trim()).filter(Boolean)),
-  ].sort((a, b) => a.localeCompare(b));
-
-  return { cardCount: parsed.length, patterns };
+  return { cardCount: parsed.length };
 });
 
 export const getCards = cache(async (): Promise<Card[]> => {
