@@ -1,0 +1,26 @@
+---
+id: vertical-order-traversal-of-a-binary-tree
+title: Vertical Order Traversal of a Binary Tree
+pattern: bfs
+subpattern: vertical-order-traversal
+order: 0
+url: https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
+clarifyingQuestions:
+  - Should columns be returned from left to right?
+  - Within the same column, should nodes be ordered from top to bottom?
+  - If two nodes are at the same row and column, then what to do?
+optimalSummary: "traverse the tree using BFS while tracking `(node, row, column)`. Store each node in a dictionary with key as column and value as `(row, value)`. After traversal, iterate through the columns after sorting the keys of the dictionary. For each column, sort its `(row, value)` pairs so nodes are ordered first by row and then by value when rows are equal. Extract the values from each sorted column and append them to the final result."
+optimalTime: O(n log n)
+optimalSpace: O(n)
+pitfalls:
+  - Storing only node values for each column is not enough because nodes within the same column must also be ordered by row.
+  - If two nodes have the same row and column, they must be ordered by node value, so storing `(row, value)` allows Python tuple sorting to handle both conditions automatically.
+  - Iterating directly over a dictionary does not guarantee columns are processed from smallest column to largest based on their numeric value. Use `sorted(res.keys())`.
+---
+
+```python
+class Solution:
+    def verticalTraversal(self, root):
+        pass
+
+```

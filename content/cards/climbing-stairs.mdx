@@ -1,0 +1,26 @@
+---
+id: climbing-stairs
+title: Climbing Stairs
+pattern: dp
+subpattern: dp
+timeComplexity: O(n)
+timeComplexityExplanation: A single loop from step 3 through n updates the two running counts once per step.
+spaceComplexity: O(1)
+spaceComplexityExplanation: Only two integers are kept instead of an O(n) DP array.
+---
+
+## Summary
+
+This is Fibonacci: ways to reach step `n` equals ways to reach `n-1` plus ways to reach `n-2`. Iterate with two variables instead of an array.
+
+```python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n <= 2:
+            return n
+        a, b = 1, 2
+        for _ in range(3, n + 1):
+            a, b = b, a + b
+        return b
+
+```

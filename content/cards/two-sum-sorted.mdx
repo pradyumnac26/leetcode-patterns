@@ -1,0 +1,26 @@
+---
+id: two-sum-sorted
+title: Two Sum - Sorted array
+pattern: two-pointers
+subpattern: two-sum
+order: 1
+url: https://leetcode.com/problems/two-sum/
+clarifyingQuestions:
+  - Is the array sorted in ascending order?
+  - Should we return 1-indexed or 0-indexed positions?
+  - Is exactly one valid pair guaranteed?
+  - Can the same element be used twice?
+optimalSummary: Use two pointers, `left = 0` and `right = len(nums) - 1`. While `left < right`, compare `nums[left] + nums[right]` with `target`. If the sum is too large, move `right` left; if too small, move `left` right; if equal, return `[left, right]`.
+optimalTime: O(n)
+optimalSpace: O(1)
+pitfalls:
+  - Moving both pointers on every step instead of only the side that makes the sum closer to `target`.
+  - Forgetting that the array is sorted, so a larger sum means decrement `right`, not increment `left`.
+---
+
+```python
+class Solution:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        pass
+
+```

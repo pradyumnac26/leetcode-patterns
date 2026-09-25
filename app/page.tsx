@@ -1,7 +1,25 @@
-import { getDefaultData, getProblemCount } from "@/lib/content";
-import { HomeClient } from "@/components/HomeClient";
+import type { Metadata } from "next";
+import { cookies } from "next/headers";
 
-export default function HomePage() {
-  const data = getDefaultData();
-  return <HomeClient data={data} problemCount={getProblemCount()} />;
+import { HomeLanding } from "@/components/HomeLanding";
+import { getDeckSummary } from "@/lib/get-cards";
+import { parseTheme, THEME_COOKIE } from "@/lib/theme";
+
+export const metadata: Metadata = {
+  title: "dsapattern recaller",
+  description:
+    "Recall DSA patterns with swipeable cards — summary, complexity, and Python solutions.",
+};
+
+export default async function Home() {
+  const [summary, cookieStore] = await Promise.all([getDeckSummary(), cookies()]);
+  const initialTheme = parseTheme(cookieStore.get(THEME_COOKIE)?.value);
+
+  return (
+    <HomeLanding
+      initialTheme={initialTheme}
+      cardCount={summary.cardCount}
+      patterns={summary.patterns}
+    />
+  );
 }

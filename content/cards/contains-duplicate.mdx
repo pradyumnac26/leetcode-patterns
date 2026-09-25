@@ -1,0 +1,23 @@
+---
+id: contains-duplicate
+title: Contains Duplicate
+pattern: array-hashing
+subpattern: arrays
+order: 1
+url: https://leetcode.com/problems/contains-duplicate/
+clarifyingQuestions:
+  - What should we return for an empty array?
+optimalSummary: Maintain a hash set. For each number, if it is already in the set, return `true`. Otherwise add it to the set. If the loop finishes, return `false`.
+optimalTime: O(n)
+optimalSpace: O(n)
+pitfalls:
+  - Adding to hashset before checking if it exists in the hashset or no, will definetly return true all the time.
+  - Returning `true` on the first duplicate is correct, but forgetting to return `false` after a full pass makes empty and unique arrays fail.
+---
+
+```python
+class Solution:
+    def containsDuplicate(self, nums: list[int]) -> bool:
+        pass
+
+```

@@ -1,0 +1,30 @@
+---
+id: valid-parentheses
+title: Valid Parentheses
+pattern: stack
+subpattern: stack
+timeComplexity: O(n)
+timeComplexityExplanation: Each character is pushed or popped at most once.
+spaceComplexity: O(n)
+spaceComplexityExplanation: The stack can hold up to n opening brackets when no closers appear early.
+---
+
+## Summary
+
+Push opening brackets onto a stack. On a closing bracket, pop and verify it matches. Valid if the stack is empty at the end.
+
+```python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        pairs = {")": "(", "}": "{", "]": "["}
+        stack: list[str] = []
+        for ch in s:
+            if ch in "({[":
+                stack.append(ch)
+            else:
+                if not stack or stack[-1] != pairs[ch]:
+                    return False
+                stack.pop()
+        return not stack
+
+```

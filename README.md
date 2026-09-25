@@ -1,51 +1,94 @@
-# DSA Pattern Notes
+# dsapattern recaller
 
-Pattern-wise revision notes for LeetCode and DSA interviews — grouped by technique family, with clarifying questions, approaches, and pitfalls for each problem.
+Mobile-first PWA: vertical Reels-style cards. Each card shows pattern notes on the front; tap to flip to a scrollable Python solution with syntax highlighting.
 
-## Getting Started
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000). Use your browser’s device toolbar or a phone on the same network.
 
-## Deploy on Vercel
+## Install as an app
 
-1. Import this repo at [vercel.com/new](https://vercel.com/new)
-2. Framework preset: **Next.js** (auto-detected)
-3. Build command: `npm run build` (default)
-4. Output: default
-5. Deploy
+- **iOS Safari**: Share → Add to Home Screen
+- **Android Chrome**: Menu → Install app / Add to Home Screen
 
-No environment variables required.
+After the first visit, cached assets allow offline use (card content is included at build time).
 
-## Adding or editing a problem
+## Add a card
 
-Create or edit a markdown file in `content/problems/` using the LeetCode slug as the filename.
+Create a file in `content/cards/` named `your-problem.mdx`.
 
-Example: `content/problems/two-sum.md`
+### Notes format (recommended)
 
-```yaml
+Matches a structured interview-prep note:
+
+```mdx
 ---
-title: Two Sum
-difficulty: Easy
-pattern: array-hashing
-subpattern: hash-map
-patternNote: Use a hash map storing value to index. Check complement before inserting.
-order: 2
+title: Vertical Order Traversal of a Binary Tree
+pattern: bfs
+subpattern: vertical-order-traversal
+order: 0
+url: https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
 clarifyingQuestions:
-  - Return indices or the values themselves?
-bruteSummary: Check every pair with nested loops.
-bruteTime: O(n²)
-bruteSpace: O(1)
-optimalSummary: Use a hash map for complements.
-optimalTime: O(n)
+  - Should columns be returned from left to right?
+  - Within the same column, should nodes be ordered from top to bottom?
+optimalSummary: Your optimal approach in plain text.
+optimalTime: O(n log n)
 optimalSpace: O(n)
-pitfalls: Cannot reuse the same element twice.
-companies: [Amazon, Google]
+pitfalls:
+  - First pitfall to remember.
+  - Second pitfall to remember.
 ---
+
+```python
+class Solution:
+    def solve(self) -> None:
+        pass
+```
 ```
 
-**Sub-patterns** are defined in `lib/subpatterns.ts`. Default assignments live in `lib/subpattern-map.ts` (override per file via frontmatter).
+- **id** comes from `subpattern`, or `id`, or the LeetCode slug in `url`.
+- **`order`** controls default deck order (lower first). Shuffle still randomizes in the app.
+
+### Classic format (still supported)
+
+```mdx
+---
+id: your-problem
+title: Your Problem
+timeComplexity: O(n)
+spaceComplexity: O(1)
+leetcodeUrl: https://leetcode.com/problems/your-problem/
+---
+
+## Question
+
+Problem statement here.
+
+## Summary
+
+Short approach here.
+
+```python
+class Solution:
+    def solve(self) -> None:
+        pass
+```
+```
+
+Restart the dev server after adding files.
+
+## Build
+
+```bash
+npm run build
+npm start
+```
+
+## Controls
+
+Only two options: **light / dark** theme and **shuffle** (random order, scrolls to top).

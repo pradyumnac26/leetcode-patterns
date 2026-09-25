@@ -1,0 +1,25 @@
+---
+id: add-two-numbers
+title: Add Two Numbers
+pattern: linked-list
+subpattern: linked-list
+order: 0
+clarifyingQuestions:
+  - Can the 2 linked lists be of different lengths?
+  - So if the final sum creates a extra carry digit, we should append a new node right? for example 999 + 1 = 1000
+  - Are leading zeros allowed? Can the linked list end with zeros that would become zeros at the beginning of the actual number after reversing?
+optimalSummary: Traverse both linked lists from left to right, add corresponding digits and carry, create a node with `sum % 10`, update `carry = sum // 10`, and continue until both lists and the carry are exhausted. Time complexity is linear because we traverse both linked lists once, and the loop runs until the bigger list is exhausted.
+optimalTime: O(max(m,n))
+optimalSpace: O(1)
+optimalSpaceExplanation: Auxiliary space only (carry and pointers). The output linked list is O(max(m,n)) if you count nodes allocated for the result.
+pitfalls:
+  - Stopping the loop when one list ends instead of continuing with the longer list.
+  - Forgetting to treat a missing node as 0 after one list is exhausted.
+---
+
+```python
+class Solution:
+    def addTwoNumbers(self, l1, l2):
+        pass
+
+```

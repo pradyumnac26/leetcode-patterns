@@ -1,13 +1,12 @@
+import withSerwistInit from "@serwist/next";
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  webpack: (config, { dev }) => {
-    // Avoid corrupted filesystem cache causing Internal Server Error in dev
-    if (dev) {
-      config.cache = { type: "memory" };
-    }
-    return config;
-  },
-};
+const withSerwist = withSerwistInit({
+  swSrc: "app/sw.ts",
+  swDest: "public/sw.js",
+  disable: process.env.NODE_ENV === "development",
+});
 
-export default nextConfig;
+const nextConfig: NextConfig = {};
+
+export default withSerwist(nextConfig);

@@ -1,0 +1,24 @@
+---
+id: all-nodes-distance-k-in-binary-tree
+title: All Nodes Distance K in Binary Tree
+pattern: trees
+subpattern: tree-bfs
+order: 0
+clarifyingQuestions:
+  - Is the target node guaranteed to exist in the tree?
+  - Can k be 0, and should we return only the target?
+  - Are node values unique, or only node references matter?
+optimalSummary: Build parent map with DFS, then BFS from target using parent, left, and right neighbors.
+optimalTime: O(n)
+optimalSpace: O(n)
+pitfalls:
+  - Must traverse upward via parent links; mark visited to avoid cycles.
+  - Handle k = 0 before BFS.
+---
+
+```python
+class Solution:
+    def distanceK(self, root, target, k: int) -> list:
+        pass
+
+```
