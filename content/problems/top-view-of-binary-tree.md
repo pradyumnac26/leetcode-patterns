@@ -19,6 +19,5 @@ optimalSpace: O(n)
 
 pitfalls:
   - Overwriting an existing column value will lose the topmost node. Only store a value when the column is seen for the first time.
-  - BFS is useful here because it guarantees nodes are processed level by level, so the first node seen in a column is the topmost one.
   - Row tracking is not required for the top view if BFS is used.
   - Iterating directly over a dictionary does not sort columns numerically. Use `sorted(res.keys())` to return the view from left to right.
